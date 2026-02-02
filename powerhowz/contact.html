@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us | Symposium 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#f5f5f5;
+  font-family:Arial,sans-serif;
+}
+
+/* SECTION */
+.section{
+  min-height:100vh;
+  padding:100px 20px;
+  background:
+    radial-gradient(circle, rgba(139,0,0,0.25), transparent 60%),
+    linear-gradient(180deg, #000000, #0b0000);
+}
+
+/* BOX */
+.contact-box{
+  max-width:900px;
+  margin:auto;
+  border:3px solid #8b0000;
+  border-radius:18px;
+  padding:50px 30px;
+  background:rgba(0,0,0,0.7);
+}
+
+/* TITLES */
+h1{
+  text-align:center;
+  color:#d4af37;
+  letter-spacing:4px;
+  margin-bottom:40px;
+}
+h3{
+  color:#8b0000;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+/* TEXT */
+p{
+  color:#cccccc;
+  line-height:1.8;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-bottom:40px;
+}
+
+/* LINKS */
+a{
+  color:#d4af37;
+  text-decoration:none;
+}
+a:hover{
+  color:#ffffff;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:10px 26px;
+  border:1px solid #d4af37;
+  color:#d4af37;
+  letter-spacing:1.5px;
+}
+.back-btn:hover{
+  background:#8b0000;
+  border-color:#8b0000;
+  color:#fff;
+}
+  /* ================= HAMBURGER MENU ================= */
+#menu-btn{
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  width: 30px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#menu-btn span{
+  display: block;
+  height: 3px;
+  background: #d4af37;
+  margin: 6px 0;
+}
+
+/* SIDE MENU */
+#side-menu{
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(180deg, #000000, #1a0000);
+  padding-top: 100px;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+#side-menu a{
+  display: block;
+  padding: 15px 30px;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}
+
+#side-menu a:hover{
+  background-color: #8b0000;
+  color: #ffffff;
+}
+
+#side-menu.active{
+  left: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="section">
+
+  <div class="contact-box">
+
+    <h1>CONTACT US</h1>
+
+    <!-- COLLEGE INFO -->
+    <div style="text-align:center; margin-bottom:40px;">
+      <p>
+        <strong style="color:#d4af37;">
+          Department of Electrical and Electronics Engineering
+        </strong><br>
+        Agni College of Technology<br>
+        Thalambur, Chennai, Tamil Nadu
+      </p>
+    </div>
+
+    <!-- COORDINATORS -->
+    <div class="grid">
+
+      <!-- STUDENT COORDINATORS -->
+      <div>
+        <h3>👨‍🎓 STUDENT COORDINATORS</h3>
+        <p>
+          Maheshwar S – Vice President<br>
+          Hari Prasath M – Joint Secretary<br>
+          Maiyarasu S – Treasury
+        </p>
+
+        <p style="margin-top:10px;">
+          <strong>For Queries & Registration:</strong><br>
+          <a href="tel:+919XXXXXXXXX">
+            Sriram J – 9XXXXXXXXX
+          </a><br>
+          <span style="font-size:13px; color:#aaaaaa;">
+            (Registration Head)
+          </span>
+        </p>
+      </div>
+
+      <!-- FACULTY COORDINATOR -->
+      <div>
+        <h3>👩‍🏫 FACULTY COORDINATOR</h3>
+        <p>
+          Aravindan M<br>
+          Head of Department<br>
+          Department of Electrical and Electronics Engineering
+        </p>
+        <p>
+          Agila D<br>
+          Assistant Professor<br>
+          Department of Electrical and Electronics Engineering
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CONTACT DETAILS -->
+    <div class="grid">
+
+      <!-- EMAIL -->
+      <div>
+        <h3>📧 EMAIL</h3>
+        <p>
+          <a href="mailto:powerhowz26@gmail.com">
+            powerhowz26@gmail.com
+          </a>
+        </p>
+      </div>
+
+      <!-- SOCIAL -->
+      <div>
+        <h3>🌐 SOCIAL MEDIA</h3>
+        <p>
+          <a href="https://www.instagram.com/powerhowz_26_" target="_blank">
+            Instagram: @powerhowz_26_
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MAP -->
+    <div style="margin-bottom:40px;">
+      <h3>📍 LOCATION</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1944.957144325609!2d80.19427469682158!3d12.848812310371718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d0554775e57%3A0x191bc5eec274319!2sAgni%20College%20of%20Technology!5e0!3m2!1sen!2sin!4v1769613285279!5m2!1sen!2sin"
+        width="100%"
+        height="280"
+        style="border:0; border-radius:10px;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- BACK -->
+    <div style="text-align:center;">
+      <a href="index.html" class="back-btn">
+        ← Back to Home
+      </a>
+    </div>
+
+  </div>
+
+</div>
+<script>
+function toggleMenu(){
+  document.getElementById("side-menu").classList.toggle("active");
+}
+</script>
+
+</body>
+<!-- ================= HAMBURGER MENU ================= -->
+
+<!-- MENU BUTTON -->
+<div id="menu-btn" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SIDE MENU -->
+<div id="side-menu">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="registration.html">Registration</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+</html>

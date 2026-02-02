@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /* ================= HAMBURGER MENU ================= */
+#menu-btn{
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  width: 30px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#menu-btn span{
+  display: block;
+  height: 3px;
+  background: #d4af37;
+  margin: 6px 0;
+}
+
+/* SIDE MENU */
+#side-menu{
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(180deg, #000000, #1a0000);
+  padding-top: 100px;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+#side-menu a{
+  display: block;
+  padding: 15px 30px;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}
+
+#side-menu a:hover{
+  background-color: #8b0000;
+  color: #ffffff;
+}
+
+#side-menu.active{
+  left: 0;
+}
+
+</style>
+<body>
+<script>
+function toggleMenu(){
+  document.getElementById("side-menu").classList.toggle("active");
+}
+</script>
+
+</body>
+<!-- ================= HAMBURGER MENU ================= -->
+
+<!-- MENU BUTTON -->
+<div id="menu-btn" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SIDE MENU -->
+<div id="side-menu">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="registration.html">Registration</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+</html>

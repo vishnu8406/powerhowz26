@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Symposium 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#f5f5f5;
+  font-family:Arial,sans-serif;
+}
+
+/* ---------------- HAMBURGER MENU ---------------- */
+#menu-btn{
+  position:fixed;
+  top:25px;
+  left:25px;
+  width:30px;
+  cursor:pointer;
+  z-index:1001;
+}
+#menu-btn span{
+  display:block;
+  height:3px;
+  background:#d4af37;
+  margin:6px 0;
+}
+#side-menu{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:linear-gradient(#000,#1a0000);
+  padding-top:100px;
+  transition:.4s;
+  z-index:1000;
+}
+#side-menu a{
+  display:block;
+  padding:15px 30px;
+  color:#d4af37;
+  text-decoration:none;
+}
+#side-menu a:hover{background:#8b0000;color:#fff;}
+#side-menu.active{left:0;}
+
+/* ---------------- HERO ---------------- */
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(10px);}
+}
+
+/* ---------------- COUNTDOWN ---------------- */
+#countdown-wrapper{
+  display:flex;
+  gap:12px;
+  padding:14px 16px;
+  border:2px solid #8b0000;
+  border-radius:12px;
+  background:rgba(0,0,0,0.7);
+  margin-bottom:35px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+#countdown-wrapper{
+  display:flex;
+  gap:8px;
+  padding:10px 12px;
+  border:2px solid #8b0000;
+  border-radius:10px;
+  background:rgba(0,0,0,0.7);
+  margin-bottom:30px;
+
+  /* IMPORTANT: FORCE ONE ROW */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.countdown-box{
+  background:rgba(0,0,0,0.85);
+  border:1px solid #d4af37;
+  border-radius:6px;
+  padding:8px 10px;
+  min-width:58px;
+  text-align:center;
+}
+
+.countdown-box span{
+  display:block;
+  font-size:18px;
+  font-weight:700;
+  color:#d4af37;
+  line-height:1.1;
+}
+
+.countdown-box small{
+  font-size:8px;
+  letter-spacing:1.2px;
+  color:#cccccc;
+}
+
+
+/* ---------------- EVENTS ---------------- */
+.events-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:35px;
+  max-width:1100px;
+  margin:auto;
+}
+.event-card{
+  background:rgba(0,0,0,.65);
+  border:2px solid #8b0000;
+  border-radius:14px;
+  padding:30px 18px;
+  transition:.3s;
+  text-align:center;
+}
+.event-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 22px rgba(139,0,0,.6);
+}
+.event-placeholder{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:2px solid #d4af37;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:2px;
+  color:#d4af37;
+  margin:0 auto;
+}
+.event-card h4{
+  color:#d4af37;
+  letter-spacing:2px;
+  margin:18px 0 22px;
+}
+.event-card a{
+  padding:9px 22px;
+  border:1px solid #d4af37;
+  color:#d4af37;
+  text-decoration:none;
+}
+.event-card a:hover{
+  background:#8b0000;
+  border-color:#8b0000;
+  color:#fff;
+}
+.event-logo{
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px rgba(212,175,55,0.6));
+}
+
+/* ================= FLIP CARD (4:3) ================= */
+
+.flip-card{
+  width: 280px;
+  aspect-ratio: 4 / 3;
+  perspective: 1000px;
+  margin: auto;
+}
+
+/* INNER WRAPPER */
+.flip-card-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+/* FLIP TRIGGER */
+.flip-card:hover .flip-card-inner,
+.flip-card:active .flip-card-inner{
+  transform: rotateY(180deg);
+}
+
+/* FRONT & BACK COMMON */
+.flip-front,
+.flip-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid #8b0000;
+  box-sizing: border-box;
+}
+
+/* FRONT SIDE */
+.flip-front{
+  background: #000;
+}
+
+.flip-front img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* SHOW FULL IMAGE */
+  background: #000;
+}
+
+/* BACK SIDE */
+.flip-back{
+  background: linear-gradient(180deg, #0b0000, #000);
+  transform: rotateY(180deg);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  text-align: center;
+}
+
+.flip-back h4{
+  color: #d4af37;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.flip-back p{
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cccccc;
+  margin-bottom: 14px;
+}
+
+.flip-back a{
+  padding: 8px 22px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
+
+.flip-back a:hover{
+  background: #8b0000;
+  border-color: #8b0000;
+  color: #ffffff;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div id="menu-btn" onclick="toggleMenu()">
+  <span></span><span></span><span></span>
+</div>
+<div id="side-menu">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="registration.html">Registration</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<div style="min-height:100vh;
+background:radial-gradient(circle,rgba(139,0,0,.35),transparent 60%),linear-gradient(#000,#0b0000);
+display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;">
+
+<p style="color:#ccc;letter-spacing:2px;">Agni College of Technology</p>
+<p style="color:#d4af37;letter-spacing:2.5px;margin-bottom:18px;">
+Department of Electrical and Electronics Engineering</p>
+
+<p style="color:#8b0000;letter-spacing:4px;margin-bottom:30px;">PROUDLY PRESENTS</p>
+
+<img src="logo1%20(1).png" style="width:320px;max-width:90%;margin-bottom:25px;
+filter:drop-shadow(0 0 20px rgba(139,0,0,.6));">
+
+<p style="color:#d4af37;letter-spacing:3px;margin-bottom:30px;">
+National Level Technical Symposium</p>
+
+<div id="countdown-wrapper">
+  <div class="countdown-box"><span id="days">00</span><small>DAYS</small></div>
+  <div class="countdown-box"><span id="hours">00</span><small>HOURS</small></div>
+  <div class="countdown-box"><span id="minutes">00</span><small>MINUTES</small></div>
+  <div class="countdown-box"><span id="seconds">00</span><small>SECONDS</small></div>
+</div>
+
+<div style="font-size:26px;color:#8b0000;animation:bounce 1.6s infinite;">⌄⌄</div>
+</div>
+
+<!-- EVENTS -->
+<div style="padding:100px 20px;text-align:center;
+background:radial-gradient(circle,rgba(139,0,0,.25),transparent 60%),linear-gradient(#000,#0b0000);">
+
+<h2 style="color:#d4af37;letter-spacing:4px;margin-bottom:60px;">EVENTS</h2>
+
+<h3 style="color:#8b0000;letter-spacing:3px;margin-bottom:40px;">TECHNICAL EVENTS</h3>
+<div class="events-grid">
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="innovista.png" alt="Innovista">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>Innovista</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#innovista">Know More</a>
+    </div>
+
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="powerplay.png" alt="PowerPlay">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>PowerPlay</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#powerplay">Know More</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="gridspark.png" alt="GridSpark">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>GridSpark</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#gridspark">Know More</a>
+    </div>
+
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="electro_scavanger_c.png" alt="Electro Scavenger">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>Electro Scavenger</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#electroscavenger">Know More</a>
+    </div>
+
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="Tech_gamble.png" alt="Tech Gamble">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>Tech Gamble</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#techgamble">Know More</a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<h3 style="color:#8b0000;letter-spacing:3px;margin:90px 0 40px;">NON-TECHNICAL EVENTS</h3>
+<div class="events-grid">
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="guess_and_go.jpeg" alt="Guess & Go">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>Guess & Go</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#guessandgo">Know More</a>
+    </div>
+
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="brocode.png" alt="BroCode">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>BroCode</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#brocode">Know More</a>
+    </div>
+
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+
+    <!-- FRONT (POSTER) -->
+    <div class="flip-front">
+      <img src="takeshi's_castle.png" alt="Takeshi's Castle">
+    </div>
+
+    <!-- BACK (DETAILS) -->
+    <div class="flip-back">
+      <h4>Takeshi's Castle</h4>
+      <p>
+        some question has answer, some question creates another question. are you ready  to find the answer and face the questions?
+      </p>
+      <a href="events.html#takeshicastle">Know More</a>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ================= FOOTER SECTION ================= -->
+<div style="
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0b0000, #000000);
+  display: flex;
+  justify-content: center;
+">
+
+  <div style="
+    max-width: 1100px;
+    width: 100%;
+    border: 3px solid #8b0000;
+    border-radius: 16px;
+    padding: 40px 30px;
+    background: rgba(0,0,0,0.75);
+  ">
+
+    <h2 style="
+      color: #d4af37;
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    ">
+      CONTACT & EVENT DETAILS
+    </h2>
+
+    <!-- LOCATION -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="color:#8b0000; letter-spacing:2px;">📍 LOCATION</h3>
+      <p style="color:#cccccc; line-height:1.6;">
+        Agni College of Technology<br>
+        Thalambur, Chennai, Tamil Nadu
+      </p>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1944.957144325609!2d80.19427469682158!3d12.848812310371718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d0554775e57%3A0x191bc5eec274319!2sAgni%20College%20of%20Technology!5e0!3m2!1sen!2sin!4v1769613285279!5m2!1sen!2sin"
+        width="100%"
+        height="280"
+        style="border:0; border-radius:10px; margin-top:15px;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- COORDINATORS -->
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    ">
+
+      <!-- STUDENT COORDINATORS -->
+      <div>
+        <h3 style="color:#8b0000; letter-spacing:2px;">👨‍🎓 STUDENT COORDINATORS</h3>
+        <p style="color:#cccccc; line-height:1.7;">
+          Maheshwar S – Vice President<br>
+          Hari Prasath M – Joint Secretary<br>
+          Maiyarasu S – Treasury
+        </p>
+
+        <p style="color:#cccccc; margin-top:12px;">
+          <strong>For Queries & Registration:</strong><br>
+          <a href="tel:+919XXXXXXXXX"
+             style="color:#d4af37; text-decoration:none;">
+            Sriram J – 9XXXXXXXXX
+          </a><br>
+          <span style="font-size:13px; color:#aaaaaa;">
+            (Registration Head)
+          </span>
+        </p>
+      </div>
+
+      <!-- FACULTY COORDINATOR -->
+      <div>
+        <h3 style="color:#8b0000; letter-spacing:2px;">👩‍🏫 FACULTY COORDINATOR</h3>
+        <p style="color:#cccccc; line-height:1.7;">
+          Aravindan M<br>
+          Head of Department,<br>
+          Department of Electrical and Electronics Engineering
+        </p>
+        
+        <p style="color:#cccccc; line-height:1.7;">
+          Agila D<br>
+          Assistant Professor,<br>
+          Department of Electrical and Electronics Engineering
+        </p>
+      </div>
+
+
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    ">
+<!-- REGISTRATION CTA -->
+<div style="
+  margin: 40px 0;
+  text-align: center;
+  padding: 25px 20px;
+  border: 2px dashed #8b0000;
+  border-radius: 14px;
+">
+
+  <p style="
+    color: #cccccc;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  ">
+    Participation is permitted only with an
+    <span style="color:#d4af37; font-weight:bold;">
+      official invitation
+    </span>.
+    <br>
+    Register now to receive your invitation.
+  </p>
+
+  <a href="registration.html"
+     style="
+       display: inline-block;
+       padding: 12px 36px;
+       border: 2px solid #d4af37;
+       color: #d4af37;
+       text-decoration: none;
+       letter-spacing: 2px;
+       font-size: 16px;
+       transition: 0.3s;
+     "
+     onmouseover="this.style.background='#8b0000';this.style.borderColor='#8b0000';this.style.color='#fff';"
+     onmouseout="this.style.background='transparent';this.style.borderColor='#d4af37';this.style.color='#d4af37';"
+  >
+    REGISTER NOW
+  </a>
+
+</div>
+
+      <!-- EMAIL -->
+      <div>
+        <h3 style="color:#8b0000; letter-spacing:2px;">📧 EMAIL</h3>
+        <p style="color:#cccccc;">
+          <a href="mailto:powerhowz26@gmail.com"
+             style="color:#cccccc; text-decoration:none;">
+            powerhowz26@gmail.com
+          </a>
+        </p>
+      </div>
+
+      <!-- SOCIAL MEDIA -->
+      <div>
+        <h3 style="color:#8b0000; letter-spacing:2px;">🌐 SOCIAL MEDIA</h3>
+        <p style="color:#cccccc;">
+          <a href="https://www.instagram.com/powerhowz_26_"
+             target="_blank"
+             style="color:#cccccc; text-decoration:none;">
+            Instagram: @powerhowz_26_
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div style="
+      text-align: center;
+      border-top: 1px solid #8b0000;
+      padding-top: 20px;
+      color: #999999;
+      font-size: 14px;
+      letter-spacing: 1px;
+    ">
+      © 2026 Department of Electrical and Electronics Engineering,<br>
+      Agni College of Technology
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById("side-menu").classList.toggle("active");
+}
+
+const eventDate=new Date("February 14, 2026 09:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime(),d=eventDate-now;
+  if(d<0)return;
+  days.innerText=Math.floor(d/(1000*60*60*24));
+  hours.innerText=Math.floor(d/(1000*60*60)%24);
+  minutes.innerText=Math.floor(d/(1000*60)%60);
+  seconds.innerText=Math.floor(d/1000%60);
+},1000);
+</script>
+
+</body>
+</html>

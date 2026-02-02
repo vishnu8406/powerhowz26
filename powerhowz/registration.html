@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration | Symposium 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#f5f5f5;
+  font-family:Arial,sans-serif;
+}
+
+/* SECTION */
+.section{
+  min-height:100vh;
+  padding:100px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+    radial-gradient(circle, rgba(139,0,0,0.25), transparent 60%),
+    linear-gradient(180deg, #000000, #0b0000);
+}
+
+/* BOX */
+.reg-box{
+  max-width:750px;
+  width:100%;
+  border:3px solid #8b0000;
+  border-radius:18px;
+  padding:50px 30px;
+  background:rgba(0,0,0,0.7);
+}
+
+/* TITLES */
+h1{
+  color:#d4af37;
+  letter-spacing:4px;
+  margin-bottom:25px;
+}
+p{
+  color:#cccccc;
+  line-height:1.9;
+  letter-spacing:1px;
+}
+
+/* HIGHLIGHT TEXT */
+.highlight{
+  color:#d4af37;
+  font-weight:bold;
+}
+
+/* REGISTER BUTTON */
+.register-btn{
+  display:inline-block;
+  margin-top:40px;
+  padding:14px 40px;
+  border:2px solid #d4af37;
+  color:#d4af37;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:2px;
+  transition:.3s;
+}
+.register-btn:hover{
+  background:#8b0000;
+  border-color:#8b0000;
+  color:#fff;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:inline-block;
+  margin-top:30px;
+  font-size:14px;
+  letter-spacing:1.5px;
+  color:#cccccc;
+  text-decoration:none;
+}
+.back-btn:hover{color:#d4af37;}
+  /* ================= HAMBURGER MENU ================= */
+#menu-btn{
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  width: 30px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#menu-btn span{
+  display: block;
+  height: 3px;
+  background: #d4af37;
+  margin: 6px 0;
+}
+
+/* SIDE MENU */
+#side-menu{
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(180deg, #000000, #1a0000);
+  padding-top: 100px;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+#side-menu a{
+  display: block;
+  padding: 15px 30px;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}
+
+#side-menu a:hover{
+  background-color: #8b0000;
+  color: #ffffff;
+}
+
+#side-menu.active{
+  left: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="section">
+  <div class="reg-box">
+
+    <h1>REGISTRATION</h1>
+
+    <p>
+  Register to participate in our
+  <span class="highlight">National Level Technical Symposium</span>.
+  <br><br>
+
+  <span class="highlight">Registration Fee: ₹150</span>
+  <br><br>
+
+  The registration fee includes:
+  <br>
+  • Refreshments and food (Vegetarian & Non-Vegetarian)<br>
+  • Event kit for all participants<br>
+  • Participation certificates for all participants
+  <br><br>
+
+  <span class="highlight">Registration closes on 13-02-2026 at 5:00 PM.</span>
+  <br><br>
+
+  Participation is permitted only with an
+  <span class="highlight">official invitation</span>.
+  The invitation will be issued only after successful registration
+  through the registration form.
+  <br><br>
+
+  Registration is applicable for
+  <span class="highlight">both online and offline payment modes</span>.
+</p>
+
+
+    <!-- REGISTER BUTTON -->
+    <a href="https://forms.gle/fFFbjg2Tj6zbKxpr5"
+   target="_blank"
+   class="register-btn">
+
+      REGISTER NOW
+    </a>
+
+    <p style="margin-top:25px; font-size:14px; color:#aaaaaa;">
+      * Invitation will be sent only to registered participants.
+    </p>
+
+    <a href="index.html" class="back-btn">
+      ← Back to Home
+    </a>
+
+  </div>
+</div>
+<script>
+function toggleMenu(){
+  document.getElementById("side-menu").classList.toggle("active");
+}
+</script>
+
+</body>
+<!-- ================= HAMBURGER MENU ================= -->
+
+<!-- MENU BUTTON -->
+<div id="menu-btn" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SIDE MENU -->
+<div id="side-menu">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="registration.html">Registration</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+</html>
